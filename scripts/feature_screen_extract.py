@@ -15,6 +15,7 @@
 import io, os, sys, json, glob, bisect, math, warnings
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LW = os.path.join(ROOT, 'data', 'live_windows')
+_DAILY1M = json.load(open(os.path.join(ROOT, 'data', 'binance_daily_1m.json')))
 import numpy as np
 import pandas as pd
 import ta
@@ -39,8 +40,9 @@ def bn_bars(sym, t0, t1):
         ts, qv, tb = _npz[sym]
         i0, i1 = bisect.bisect_left(ts, t0), bisect.bisect_right(ts, t1)
         for i in range(i0, i1): out[int(ts[i])] = (float(tb[i]), float(qv[i]))
-    for fp in glob.glob(os.path.join(ROOT, 'data', 'binance_daily_1m', '%s_*.json' % sym)):
-        for r in json.load(open(fp)):
+    for key, rows in _DAILY1M.items():
+        if not key.startswith(sym + '_'): continue
+        for r in rows:
             if t0 <= r[0] <= t1: out[r[0]] = (r[8], r[6])
     return out
 
