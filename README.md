@@ -7,7 +7,7 @@ Bybit and OKX for 37 days (500 trades), and then spent a month trying to falsify
 everything I had: a 24-month backtest, a 52,199-leg outcome study, an 867-feature screen with
 a permutation control, and a dozen entry/exit variants. Everything points the same way.
 
-Full write-up with charts: [`report/post-mortem.html`](report/post-mortem.html)
+Full write-up with charts: **https://0104venn-ctrl.github.io/AIS0.2/report/post-mortem.html**
 
 ## Live result
 
@@ -88,7 +88,7 @@ exports/                      results: live trades, backtest trades, feature mat
 data/live_windows/            per-trade 1m windows, OI, funding (Bybit) — 9 MB
 data/binance_daily_1m/        Binance 1m with taker-buy volume for the Sep-2026 trades
 data/binance_1m/              (gitignored) 24-month 1m klines — download with dl_binance_2y.py
-report/post-mortem.html       the write-up
+report/post-mortem.html       the write-up (rendered at the GitHub Pages link above)
 ```
 
 ## Notes for a reader
